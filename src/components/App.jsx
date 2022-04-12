@@ -32,15 +32,16 @@ export class App extends React.Component {
   }
 
   render() {
-    const {city, data} = this.state
+    const {city} = this.state
+    const values = [{ label: 'Current temperature', value: this.state.data.temp }, { label: 'Current Humidity', value: this.state.data.humidity }, { label: 'Min temperature', value: this.state.data.temp_min }, { label: 'Max temperature', value: this.state.data.temp_max },];
 
     return <div className={css.wrapper}>
       <h1 className={css.title}>What's the weather today?</h1>
       <input className={css.input} value={city} placeholder='your city' onChange = {(e) => this.setState({city: e.target.value})} type="text" />
        {this.state.loadStatus === LOAD_STATUSES.LOADING && <Loader/>}
-       {this.state.loadStatus === LOAD_STATUSES.ERROR && <span className={css.error}>Ой, что-то пошло не так :(</span>}
+       {this.state.loadStatus === LOAD_STATUSES.ERROR && <span className={css.error}>Oops, try again :( (</span>}
        {this.state.loadStatus === LOAD_STATUSES.LOADED && 
-        <WeatherList {...data}/>
+        <WeatherList values={values}/>
        }
     </div>
   }
