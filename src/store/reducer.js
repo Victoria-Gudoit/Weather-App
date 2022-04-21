@@ -14,12 +14,14 @@ export const reducer = (state = INITIAL_STATE, action) => {
         loadStatus: LOAD_STATUSES.LOADING,
       };
     }
+
     case WEATHER_ACTIONS.FETCH_SUCCESS: {
       return {
         data: action.payload,
         loadStatus: LOAD_STATUSES.LOADED,
       };
     }
+
     case WEATHER_ACTIONS.FETCH_ERROR: {
       return {
         data: {},
