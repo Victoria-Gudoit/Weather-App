@@ -10,7 +10,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case WEATHER_ACTIONS.FETCH_START: {
       return {
-        data: state.data,
+        ...state,
         loadStatus: LOAD_STATUSES.LOADING,
       };
     }

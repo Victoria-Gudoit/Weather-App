@@ -21,12 +21,6 @@ export class AppOriginal extends React.Component {
 
   render() {
     const { city } = this.state;
-    const values = [
-      { label: "Current temperature", value: `${this.props.data.temp} °C` },
-      { label: "Current Humidity", value: `${this.props.data.humidity} %` },
-      { label: "Min temperature", value: `${this.props.data.temp_min} °C` },
-      { label: "Max temperature", value: `${this.props.data.temp_max} °C` },
-    ];
     const { isLoading, isLoaded, isError } = this.props;
 
     return (
@@ -41,7 +35,7 @@ export class AppOriginal extends React.Component {
         />
         {isLoading && <Loader />}
         {isError && <span className={css.error}>Oops, try again :( (</span>}
-        {isLoaded && <WeatherList values={values} />}
+        {isLoaded && <WeatherList/>}
       </div>
     );
   }
@@ -49,7 +43,6 @@ export class AppOriginal extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: WeatherSelectors.getWeather(state),
     isLoading: WeatherSelectors.isLoading(state),
     isLoaded: WeatherSelectors.isLoaded(state),
     isError: WeatherSelectors.isError(state),
