@@ -1,8 +1,8 @@
 import { LOAD_STATUSES } from "../constants";
 
-export const getWeather = (state) => state.data;
+export const getWeather = (state) => state.weatherReducer.data;
 
-export const getLoadStatus = (state) => state.loadStatus;
+export const getLoadStatus = (state) => state.weatherReducer.loadStatus;
 
 export const isLoading = (state) =>
   getLoadStatus(state) === LOAD_STATUSES.LOADING;

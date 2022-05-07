@@ -1,33 +1,24 @@
 import css from "./styles.module.css";
-import { connect } from "react-redux";
 import { WeatherSelectors } from "../store";
 import React from "react";
+import { useSelector } from "react-redux";
 
-class WeatherListOriginal extends React.Component {
-  render() {
-    const { data } = this.props;
-    const values = [
-      { label: "Current temperature", value: `${data.temp} °C` },
-      { label: "Current Humidity", value: `${data.humidity} %` },
-      { label: "Min temperature", value: `${data.temp_min} °C` },
-      { label: "Max temperature", value: `${data.temp_max} °C` },
-    ];
-    return (
-      <ul className={css.list}>
-        {values.map(({ label, value }) => (
-          <li key={label} className={css.item}>
-            {label}: {value}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+export const WeatherList = () => {
+  const data = useSelector(WeatherSelectors.getWeather);
 
-const mapStateToProps = (state) => {
-  return {
-    data: WeatherSelectors.getWeather(state),
-  };
+  const values = [
+    { label: "Current temperature", value: `${data.temp} °C` },
+    { label: "Current Humidity", value: `${data.humidity} %` },
+    { label: "Min temperature", value: `${data.temp_min} °C` },
+    { label: "Max temperature", value: `${data.temp_max} °C` },
+  ];
+  return (
+    <ul className={css.list}>
+      {values.map(({ label, value }) => (
+        <li key={label} className={css.item}>
+          {label}: {value}
+        </li>
+      ))}
+    </ul>
+  );
 };
-
-export const WeatherList = connect(mapStateToProps)(WeatherListOriginal);
