@@ -8,19 +8,25 @@ export const App = () => {
 
   return (
     <div className={css.wrapper}>
-      <h1 className={css.title}>What's the weather like today?</h1>
-      <input
-        className={css.input}
-        value={weatherController.city}
-        placeholder="your city"
-        onChange={({ target }) => weatherController.setCity(target.value)}
-        type="text"
-      />
-      {weatherController.isLoading && <Loader />}
-      {weatherController.isLoaded && <WeatherList />}
-      {weatherController.isError && (
-        <span className={css.error}>Oops, try again :( (</span>
-      )}
+      <div className={css.search}>
+        <input
+          className={css.input}
+          value={weatherController.city}
+          placeholder="Enter Location"
+          onChange={({ target }) => weatherController.setCity(target.value)}
+          type="text"
+        />
+      </div>
+      <div className={css.container}>
+        {weatherController.isLoading && <Loader />}
+
+        {weatherController.isLoaded && (
+          <WeatherList city={weatherController.city} />
+        )}
+        {weatherController.isError && (
+          <span className={css.error}>Oops, try again :( (</span>
+        )}
+      </div>
     </div>
   );
 };

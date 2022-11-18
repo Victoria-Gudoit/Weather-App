@@ -9,7 +9,7 @@ export const getCurrentWeather = ({ city, units = "metric" }) => {
   const params = {
     q: city,
     units,
-    appid: TOKEN,
+    appid: "2931d2be32df91993b13f915018ac4e8",
   };
 
   return request(url, { params });

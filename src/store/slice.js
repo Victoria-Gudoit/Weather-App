@@ -6,6 +6,7 @@ export const fetchWeather = createAsyncThunk(
   "weather/getWeather",
   async (city) => {
     const weather = await getCurrentWeather(city);
+    console.log(weather.main);
     return weather.main;
   }
 );
