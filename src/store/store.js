@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { reducer as weatherReducer } from "./slice";
 
 const rootReducer = combineReducers({
-  weatherReducer,
+  weather: weatherReducer,
 });
 
 export const store = configureStore({
